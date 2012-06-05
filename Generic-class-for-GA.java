@@ -72,7 +72,6 @@ abstract public class Genetic {
 	public void doCrossovers() {
 		int num = (int) (numChromosomes * crossoverFraction);
 		for (int i = num - 1; i >= 0; i--) {
-			// 8/11/2008: don't overwrite the "best" chromosome from current generation:
 			int c1 = 1 + (int) ((rouletteWheelSize - 1) * Math.random() * 0.9999f);
 			int c2 = 1 + (int) ((rouletteWheelSize - 1) * Math.random() * 0.9999f);
 			c1 = rouletteWheel[c1];
