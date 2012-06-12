@@ -1,13 +1,11 @@
-//To find the maximium of the function:
-//       f(x)=sin(x)*sin(0.4x)*sin(3x)
+
 import java.util.List;
 public class TestGenetic {
 
     static MyGenetic genetic_experiment;
 
     static public void main(String args[]) {
-        // we will use chromosomes with 10 1 bit genes per
-        // chromosomes, and a population of 12 chromosomes:
+
         genetic_experiment = new MyGenetic(10, 20, 0.85f, 0.3f);
         int geneIndex = 0;
         for (Chromosome ll  : genetic_experiment.chromosomes) {

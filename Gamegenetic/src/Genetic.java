@@ -32,8 +32,8 @@ abstract public class Genetic {
 		for (int i = 0; i < numGenesPerChromosome; i++) {
 			rouletteWheelSize += i + 1;
 		}
-		System.out.println("count of slots in roulette wheel="
-				+ rouletteWheelSize);
+		//System.out.println("count of slots in roulette wheel="
+		//		+ rouletteWheelSize);
 		rouletteWheel = new int[rouletteWheelSize];
 		int num_trials = numGenesPerChromosome;
 		int index = 0;
@@ -66,7 +66,7 @@ abstract public class Genetic {
 		sort();
 		doCrossovers();
 		doMutations();
-		doRemoveDuplicates();
+		//doRemoveDuplicates();
 	}
 
 	public void doCrossovers() {
@@ -116,7 +116,7 @@ abstract public class Genetic {
 
 class Chromosome {
 	BitSet chromosome;
-	float fitness = -999;
+	float fitness = 0;
 
 	private Chromosome() { }
 	public Chromosome(int num_genes) { chromosome = new BitSet(num_genes); }
@@ -124,7 +124,7 @@ class Chromosome {
 		return chromosome.get(index);
 	}
     public String toString() {
-      return "[Chromosome: fitness: " + fitness + ", bit set: " + chromosome+"]";
+      return " bit set is: " + chromosome.get(2) + chromosome.get(3) + chromosome.get(4) + chromosome.get(5);
     }
 	public void setBit(int index, boolean value) {
 		chromosome.set(index, value);
@@ -134,8 +134,13 @@ class Chromosome {
 		return fitness;
 	}
 
+
 	public void setFitness(float value) {
 		fitness = value;
+	}
+
+	public void incFitness(float value) {
+		fitness = fitness+value;
 	}
 
 	public boolean equals(Chromosome c) {
