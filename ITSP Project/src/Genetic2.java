@@ -77,20 +77,20 @@ abstract public class Genetic2 {
 		}
 	}
 
-	public Object getGene(int chromosome, int gene) {
-		return chromosomes.get(chromosome).getObject(gene);
+	public Object getGene(int chromosomeindex, int geneindex) {
+		return chromosomes.get(chromosomeindex).getObject(geneindex);
 	}
 
-	public void setGene(int chromosome, int gene, Object value) {
-		chromosomes.get(chromosome).setObject(gene, value);
+	public void setGene(int chromosomeindex, int geneindex, Object value) {
+		chromosomes.get(chromosomeindex).setObject(geneindex, value);
 	}
 
-	void evolve_ordered() {
+	private void evolve_ordered() {
 		doCrossovers_ordered();
 		doMutations_ordered();
 	}
 
-	void evolve_not_ordered() {
+	private void evolve_not_ordered() {
 		doCrossovers_not_ordered();
 		doMutations_not_ordered();
 	}
@@ -105,7 +105,7 @@ abstract public class Genetic2 {
 		else System.out.println("type_of_genes must either be 'ordered' or 'not_ordered'");
 	}
 	
-	public void doCrossovers_not_ordered(){
+	private void doCrossovers_not_ordered(){
 		int num = (int) (numChromosomes * crossoverFraction);
 		Random random = new Random();
 		for(int i=0; i<num;i++){
@@ -126,6 +126,7 @@ abstract public class Genetic2 {
 		double Fitness[]= new double[numChromosomes];
 		for (int i=0; i< numChromosomes; i++){
 			Fitness[i] = calcFitness(chromosomes.get(i));
+			chromosomes.get(i).setFitness(Fitness[i]);
 			if(highFitness<Fitness[i]){
 				highFitness = Fitness[i];
 				copy(chromosomes.get(i),HFChromosome);
@@ -147,7 +148,7 @@ abstract public class Genetic2 {
 	}
 			
 			
-public void doCrossovers_ordered(){
+	private void doCrossovers_ordered(){
 		int num = (int) (numChromosomes * crossoverFraction);
 		Random random = new Random();
 		for(int m=0; m<num;m++){
@@ -230,9 +231,32 @@ public void doCrossovers_ordered(){
 				}	
 			}
 		}
-		}	
+		rouletteWheelSize = 0;
+		double Fitness[]= new double[numChromosomes];
+		for (int i=0; i< numChromosomes; i++){
+			Fitness[i] = calcFitness(chromosomes.get(i));
+			chromosomes.get(i).setFitness(Fitness[i]);
+			if(highFitness<Fitness[i]){
+				highFitness = Fitness[i];
+				copy(chromosomes.get(i),HFChromosome);
+			}
+			else if(lowFitness>Fitness[i]){
+				lowFitness=Fitness[i];
+				copy(chromosomes.get(i),LFChromosome);
+			}
+			rouletteWheelSize += (int)Fitness[i];
+		}
+		rouletteWheel = new int[rouletteWheelSize];
+		int rouletteWheelSize2 =0;
+		for (int i=0;i<numChromosomes; i++){
+			for (int j =0; j<(int)Fitness[i];j++){
+				rouletteWheel[rouletteWheelSize2 + j]=i;
+			}
+			rouletteWheelSize2 += (int)Fitness[i];
+		}
+	}	
 		
-	public void doMutations_not_ordered(){
+	private void doMutations_not_ordered(){
 		int num = (int)(numChromosomes * mutationFraction);
 		Random random = new Random();
 		for(int i=0;i<num;i++){
@@ -245,6 +269,7 @@ public void doCrossovers_ordered(){
 		double Fitness[]= new double[numChromosomes];
 		for (int i=0; i< numChromosomes; i++){
 			Fitness[i] = calcFitness(chromosomes.get(i));
+			chromosomes.get(i).setFitness(Fitness[i]);
 			if(highFitness<Fitness[i]){
 				highFitness = Fitness[i];
 				copy(chromosomes.get(i),HFChromosome);
@@ -265,7 +290,7 @@ public void doCrossovers_ordered(){
 		}
 	}
 	
-	public void doMutations_ordered(){
+	private void doMutations_ordered(){
 		int num = (int)(numChromosomes * mutationFraction);
 		Random random = new Random();
 		for(int i=0;i<num;i++){
@@ -280,6 +305,7 @@ public void doCrossovers_ordered(){
 		double Fitness[]= new double[numChromosomes];
 		for (int i=0; i< numChromosomes; i++){
 			Fitness[i] = calcFitness(chromosomes.get(i));
+			chromosomes.get(i).setFitness(Fitness[i]);
 			if(highFitness<Fitness[i]){
 				highFitness = Fitness[i];
 				copy(chromosomes.get(i),HFChromosome);
@@ -302,14 +328,14 @@ public void doCrossovers_ordered(){
 
 	abstract public double calcFitness(Chromosome chromosome);
 	
-	void permute_not_ordered(Object rand[]){
+	private void permute_not_ordered(Object rand[]){
 		Random random = new Random();
 		for(int i=0;i<numGenesPerChromosome;i++){
 			rand[i]=Alleles[random.nextInt(Alleles.length)];
 		}
 	}
 	
-	void permute_ordered(Object rand[]){
+	private void permute_ordered(Object rand[]){
 		Random random = new Random();
 		for(int i=0;i < numGenesPerChromosome; i++){
 			rand[i]=0;
@@ -324,7 +350,7 @@ public void doCrossovers_ordered(){
 		}
 	}
 	
-	void nextrandom(int array[]){
+	private void nextrandom(int array[]){
 		int dupe[] = new int[numGenesPerChromosome];
 		Random random = new Random();
 		for(int i=0; i<numGenesPerChromosome; i++){
