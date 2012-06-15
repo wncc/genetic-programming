@@ -5,7 +5,7 @@ public class Strategyevolver{
 	static public void main(String args[])
 	{
 		int generations = 5000;
-		int numofruns = 1;
+		int numofruns = 10;
 		double bestfitness=0;
 		//the chromosome consists of only "C" (for cooperate) and "D" (for defect). so Allele must contain "C" and "D"
 		Object Allele[] = {"C","D"};
@@ -28,14 +28,17 @@ public class Strategyevolver{
 					genetic_experiment.copy(genetic_experiment.chromosomes.get(l),beststrategy);
 				}
 			}
+			for(int j=2;j<6;j++)
+			{
+			//printing out the best organism/strategy
+			System.out.println(beststrategy.getObject(j));
+			}
+			System.out.println("");
+			bestfitness=0;
 			//the whole setup is initialized again at the end of a run
 			genetic_experiment = new Gametheory(6,50,0.8,0.01,Allele,"not_ordered");
 		}
-		for(int j=2;j<6;j++)
-		{
-			//printing out the best organism/strategy
-			System.out.println(beststrategy.getObject(j));
-		}
+		
 	}
 }
 
