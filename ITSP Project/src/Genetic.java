@@ -262,7 +262,7 @@ abstract public class Genetic {
 		for(int i=0;i<num;i++){
 			int c = random.nextInt(numChromosomes);
 			int g= random.nextInt(numGenesPerChromosome);
-			Object k = random.nextInt(Alleles.length);
+			Object k = Alleles[random.nextInt(Alleles.length)];
 			setGene(c, g, k);
 		}
 		rouletteWheelSize = 0;
