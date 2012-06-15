@@ -1,0 +1,23 @@
+How-to-run-the-program:
+
+1) the folder consists of two files: src and documentation. The file 'src' contains the source code and the file 'documentation' contains the documentation for the generic classes: 'Genetic' and 'Chromosome'.
+
+2)To run and test the program please read the documentation first and then proceed.
+
+3)Then open 'src' file and, compile and run any of the java files:
+
+	1)travelingsalesman.java :- for running the traveling-salesman problem using the generic classes. The program takes 1-2 min for the evaluation and thn 		  reports the output in terminal.
+	
+	2)FuncOptimizer.java :- for optimizing function of your choice. The desired function should be entered in the 48th line of the program and the line 43 		should be changed appropriately according to the function. The program represents the output in the terminal.
+	
+	3)Strategyevolver.java :- for obtaining the best strategy for an iterated prisoner dilemma tournament. The scores for each possible play can be 		  changed in the retrievescore function. The program is self-explanatory if you want to test different situations. Some changes here and there can 		  serve your purpose. The program takes 1-2 min for the evaluation and thn reports the output in terminal.
+
+4)The file 'Genetic.java' consists of the generic classes that are used in all of the above files. It contains:
+
+	1)abstract public class Genetic
+	2)class Chromosome
+
+5)If you want to use the file 'Genetic.java' to solve any other NP-hard problem, all you have to do is to write your chromosome in the specified way and define the 'calcFitness' function such that an organism which is closer to the ideal solution must have more fitness than the one which isn't.(Caution: This is strictly required) and please ensure that all your possible fitness values are positive, if they aren't then add sufficient value so as to make them all possible.
+
+6)And last enjoy the world of metaheuristics using our project and delve deeper into the reason why GA is showing such high effeciency in solving problems because the same principle underlies the evolution in real life. :) Happy Coding... 
+ 
