@@ -4,8 +4,8 @@ public class Strategyevolver{
 
 	static public void main(String args[])
 	{
-		int generations = 2000;
-		int numofruns = 10;
+		int generations = 5000;
+		int numofruns = 3;
 		double bestfitness=0;
 		//the chromosome consists of only "C" (for cooperate) and "D" (for defect). so Allele must contain "C" and "D"
 		Object Allele[] = {"C","D"};
@@ -20,10 +20,13 @@ public class Strategyevolver{
 			{
 				genetic_experiment.evolve();
 			}
-			if(bestfitness<genetic_experiment.highFitness)
+			for(int l=0;l<genetic_experiment.numChromosomes;l++)
 			{
-				bestfitness=genetic_experiment.highFitness;
-				genetic_experiment.copy(genetic_experiment.HFChromosome,beststrategy);
+				if(bestfitness<genetic_experiment.Fitness[l])
+				{
+					bestfitness=genetic_experiment.Fitness[l];
+					genetic_experiment.copy(genetic_experiment.chromosomes.get(l),beststrategy);
+				}
 			}
 			//the whole setup is initialized again at the end of a run
 			genetic_experiment = new Gametheory(6,50,0.8,0.01,Allele,"not_ordered");
@@ -72,7 +75,7 @@ class Gametheory extends Genetic{
 			Object memory2[] = new Object[2];
 			memory2[0]= chromosomes.get(i).getObject(0);
 			memory2[1]= chromosomes.get(i).getObject(1);
-			for(int j=0;j<10;j++)
+			for(int j=0;j<20;j++)
 			{
 				int casenumber1 = retrievecasenumber(memory[0],memory[1]);
 				int casenumber2 = retrievecasenumber(memory2[0],memory2[1]);
