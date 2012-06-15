@@ -6,11 +6,11 @@ How-to-run-the-program:
 
 3)Then open 'src' file and, compile and run any of the java files:
 
-	1)travelingsalesman.java :- for running the traveling-salesman problem using the generic classes. The program takes 1-2 min for the evaluation and thn 		  reports the output in terminal.
+	1)travelingsalesman.java :- for running the traveling-salesman problem using the generic classes. The program takes 1-2 min for the evaluation and thn reports the output in terminal.
 	
-	2)FuncOptimizer.java :- for optimizing function of your choice. The desired function should be entered in the 48th line of the program and the line 43 		should be changed appropriately according to the function. The program represents the output in the terminal.
+	2)FuncOptimizer.java :- for optimizing function of your choice. The desired function should be entered in the 48th line of the program and the line 43 should be changed appropriately according to the function. The program represents the output in the terminal.
 	
-	3)Strategyevolver.java :- for obtaining the best strategy for an iterated prisoner dilemma tournament. The scores for each possible play can be 		  changed in the retrievescore function. The program is self-explanatory if you want to test different situations. Some changes here and there can 		  serve your purpose. The program takes 1-2 min for the evaluation and thn reports the output in terminal.
+	3)Strategyevolver.java :- for obtaining the best strategy for an iterated prisoner dilemma tournament. The scores for each possible play can be changed in the retrievescore function. The program is self-explanatory if you want to test different situations. Some changes here and there can serve your purpose. The program takes 1-2 min for the evaluation and thn reports the output in terminal.
 
 4)The file 'Genetic.java' consists of the generic classes that are used in all of the above files. It contains:
 
