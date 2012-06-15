@@ -4,11 +4,14 @@ class travelguide extends Genetic{
 		super(num_genes_per_chromosome, num_chromosomes, crossover_fraction, mutation_fraction, Alleles_, type_of_genes);
 	}
 	
+	//this method is to calculate the distance between two points
 	public double distancebetween(int a, int b,int[][] point){
 		double f =  Math.sqrt(Math.pow((point[a][0]-point[b][0]),2)+Math.pow((point[a][1]-point[b][1]),2));
 		return f;
 	}
 	
+	//this method is to calculate the fitness of a chromosome
+	//the fitness is defined as the total distance tracelled by the travel man
 	public double calcFitness(Chromosome chromosome){	
 		double Fitness=0;
 		int[][] point={{10,100},{8,70},{100,40},{30,100},{20,20},{100,30},{0,70},{35,200},{40,55},{63,70},{14,705},{32,54},{14,10},{50,18},{90,140},{26,130},{180,10},{70,150},{303,20},{0,260}};
@@ -24,7 +27,9 @@ class travelguide extends Genetic{
 		for(int i=0;i<20;i++){
 			Fitness += distances[Integer.parseInt(chromosome.getObject(i%20).toString())][Integer.parseInt(chromosome.getObject((i+1)%20).toString())];
 		}
-		
+
+	//the path is better if the distance travelled is less but the generic class 
+	//tries to find the chromosome with high fitness so we define fitness to be "10000-fitness"
 		return (10000-Fitness);
 	}		
 }
@@ -45,10 +50,13 @@ class travellingsalesman{
 			for (int j=0;j<Generations;j++){
 				travelman.evolve();
 			}
+			
+			//to find the highest fitness encountered
 			if(bestfitness<travelman.highFitness){
 				bestfitness=travelman.highFitness;
 				travelman.copy(travelman.HFChromosome,bfpath);
 			}
+			//at the start of each run the population is again generated anew
 			travelman = new travelguide(20, 100, 0.8, 0.01, allele,"ordered");
 		}
 		System.out.println("Best Fitness :" + (10000-bestfitness));
