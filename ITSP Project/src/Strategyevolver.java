@@ -46,17 +46,7 @@ class Gametheory extends Genetic{
 		super(num_g,num_c,crossover_fraction,mutation_fraction,Alleles,type_of_genes);
 	}
 	
-	//the chromosome is represented as an array of strings in this case of length 6. the first two elements in the 
-	//array represent the imaginary game played so that the first move of the chromosome is decided through the first
-	//2 elements
-	// Case1: CC
-	// Case2: CD
-	// Case3: DD
-	// Case4: DC
-	// so the chromosome for example is CDCDDC then using the first two elements the chromosome checks the case number
-	//which is equivalent to it and plays that. I mean since it is CD and it corresponds to case2 it will play the 
-	// 2+2=4th element of the chromosome that is D. From then on it remembers it's previous play and decides its next
-	//move in a similar way
+	
 
 	//the chromosome is represented as an array of strings in this case of length 6. the first two elements in the 
 	//array represent the imaginary game played so that the first move of the chromosome is decided through the first
@@ -126,11 +116,7 @@ class Gametheory extends Genetic{
 		}
 	}
 	
-	//the scores defined as such are:
-	// if player1 cooperates and player2 cooperates player1 gets 3 and player2 gets 3
-	// if player1 cooperates and player2 defects player1 gets 0 and player2 gets 5
-	// if player1 defects and player2 defects player1 gets 1 and player2 gets 1
-	// if player1 defects and player2 cooperates player1 gets 5 and player2 gets 0
+	
 
 	//the scores defined as such are:
 	// if player1 cooperates and player2 cooperates player1 gets 3 and player2 gets 3
