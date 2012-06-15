@@ -4,7 +4,7 @@ public class Strategyevolver{
 
 	static public void main(String args[])
 	{
-		int generations = 2000;
+		int generations = 5000;
 		int numofruns = 1;
 		double bestfitness=0;
 		//the chromosome consists of only "C" (for cooperate) and "D" (for defect). so Allele must contain "C" and "D"
