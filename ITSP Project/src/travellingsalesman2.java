@@ -49,7 +49,7 @@ class travellingsalesman2{
 				bestfitness=travelman.highFitness;
 				travelman.copy(travelman.HFChromosome,bfpath);
 			}
-			travelman = new travelguide2(20, 1000, 0.8, 0.01, allele,"ordered");
+			travelman = new travelguide2(20, 100, 0.8, 0.01, allele,"ordered");
 		}
 		System.out.println("Best Fitness :" + (10000-bestfitness));
 		for(int i=0;i<travelman.numGenesPerChromosome;i++){
