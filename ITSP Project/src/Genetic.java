@@ -1,6 +1,6 @@
 import java.util.*;
 
-abstract public class Genetic2 {
+abstract public class Genetic {
 
 	protected int numGenesPerChromosome;
 	protected int numChromosomes;
@@ -16,11 +16,11 @@ abstract public class Genetic2 {
 	protected double lowFitness;
 	protected Chromosome HFChromosome;
 	protected Chromosome LFChromosome;
-	public Genetic2(int num_genes_per_chromosome, int num_chromosomes, Object Alleles_[], String type_of_genes) {
+	public Genetic(int num_genes_per_chromosome, int num_chromosomes, Object Alleles_[], String type_of_genes) {
 		this(num_genes_per_chromosome, num_chromosomes, 0.8, 0.01,Alleles_,type_of_genes);
 	}
 
-	public Genetic2(int num_genes_per_chromosome, int num_chromosomes,double crossover_fraction, double mutation_fraction, Object Alleles_[],String type_of_genes){
+	public Genetic(int num_genes_per_chromosome, int num_chromosomes,double crossover_fraction, double mutation_fraction, Object Alleles_[],String type_of_genes){
 		numGenesPerChromosome = num_genes_per_chromosome;
 		numChromosomes = num_chromosomes;
 		crossoverFraction = crossover_fraction;

@@ -1,6 +1,6 @@
-class travelguide2 extends Genetic2{
+class travelguide extends Genetic{
 
-	travelguide2(int num_genes_per_chromosome, int num_chromosomes,double crossover_fraction, double mutation_fraction, Object Alleles_[],String type_of_genes){
+	travelguide(int num_genes_per_chromosome, int num_chromosomes,double crossover_fraction, double mutation_fraction, Object Alleles_[],String type_of_genes){
 		super(num_genes_per_chromosome, num_chromosomes, crossover_fraction, mutation_fraction, Alleles_, type_of_genes);
 	}
 	
@@ -29,9 +29,9 @@ class travelguide2 extends Genetic2{
 	}		
 }
 
-class travellingsalesman2{
+class travellingsalesman{
 
-	static travelguide2 travelman;
+	static travelguide travelman;
 	
 	public static void main(String args[]){
 		int Generations = 1000;
@@ -39,7 +39,7 @@ class travellingsalesman2{
 		int bestpath[] = new int[20];
 		double bestfitness =0;
 		Object allele[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19};
-		travelman = new travelguide2(20, 1000, 0.8, 0.01, allele,"ordered");
+		travelman = new travelguide(20, 1000, 0.8, 0.01, allele,"ordered");
 		Chromosome bfpath=new Chromosome(travelman.numGenesPerChromosome);
 		for (int i=0;i<numofruns;i++){
 			for (int j=0;j<Generations;j++){
@@ -49,7 +49,7 @@ class travellingsalesman2{
 				bestfitness=travelman.highFitness;
 				travelman.copy(travelman.HFChromosome,bfpath);
 			}
-			travelman = new travelguide2(20, 100, 0.8, 0.01, allele,"ordered");
+			travelman = new travelguide(20, 100, 0.8, 0.01, allele,"ordered");
 		}
 		System.out.println("Best Fitness :" + (10000-bestfitness));
 		for(int i=0;i<travelman.numGenesPerChromosome;i++){

@@ -1,5 +1,5 @@
 import java.util.List;
-public class Gamegenetic{
+public class Strategyevolver{
 	static Gametheory genetic_experiment;
 
 	static public void main(String args[])
@@ -33,7 +33,7 @@ public class Gamegenetic{
 	
 
 
-class Gametheory extends Genetic2{
+class Gametheory extends Genetic{
 
 	Gametheory(int num_g,int num_c,double crossover_fraction,double mutation_fraction, Object Alleles[],String type_of_genes)
 	{

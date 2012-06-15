@@ -1,7 +1,7 @@
 //To find the maximium of the function:
 // f(x)=sin(x)*sin(0.4x)*sin(3x)
 import java.util.List;
-public class TestGenetic {
+public class FuncOptimizer {
     static public void main(String args[]) {
         MyGenetic genetic_experiment;
         int Generations = 1000;
@@ -27,7 +27,7 @@ public class TestGenetic {
 	}		
 }
 
-class MyGenetic extends Genetic2 {
+class MyGenetic extends Genetic {
     MyGenetic(int num_genes_per_chromosome, int num_chromosomes,double crossover_fraction, double mutation_fraction, Object Alleles_[],String type_of_genes) {
         super(num_genes_per_chromosome, num_chromosomes, crossover_fraction, mutation_fraction, Alleles_, type_of_genes);
     }
